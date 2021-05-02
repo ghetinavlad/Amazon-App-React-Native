@@ -1,9 +1,16 @@
-import React , {useState} from 'react';
+import React , {useState, useCallback} from 'react';
 import {View, Text, FlatList, Image , StyleSheet, useWindowDimensions} from 'react-native';
 const ImageCarousel = ({images}) => {
 
     const windowWidth = useWindowDimensions().width;
     const [activeIndex, setActiveIndex] = useState(0);
+
+    const onChangeProduct= useCallback(({viewableItems}) => {
+        if(viewableItems.length > 0){
+            setActiveIndex(viewableItems[0].index || 0);
+        }
+        
+    }, []);
 
     return (
         <View style={styles.root}>
@@ -19,7 +26,10 @@ const ImageCarousel = ({images}) => {
                 snapToInterval={windowWidth-20}
                 snapToAlignment={'center'}
                 decelerationRate={'fast'}
-            
+                viewabilityConfig={{
+                    viewAreaCoveragePercentThreshold:50
+                }}
+                onViewableItemsChanged={onChangeProduct}
             />
 
             <View style={styles.dots}>
