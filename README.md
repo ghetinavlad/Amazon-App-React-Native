@@ -23,4 +23,8 @@
 
 </div>
 
+<div align="center">
+
 <img src="https://user-images.githubusercontent.com/73642253/118292860-bdce7e80-b4e1-11eb-88e5-bd6601097f3a.png" />
+
+</div>
